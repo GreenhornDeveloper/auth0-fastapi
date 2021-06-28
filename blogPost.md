@@ -13,15 +13,15 @@ Before we get started building with FastAPI, we need to have the following insta
 * pip
 * virtualenv 
 
-Once those software packages and libraries are installed, we can begin creating a new FastAPI application. To begin, create a new directory to devlop within. Via the command line, change directories into that folder, and create a new virtual environment using the following command `virtualenv fast-env`. After creating the virtual environment, you need to change directory into that environment folder and activate it, which can be done by typing `source bin/activate`.
+Once those software packages and libraries are installed, we can begin creating a new FastAPI application. To begin, create a new directory to devlop within. Via the command line, change directories into that folder, and create a new virtual environment using the following command `virtualenv fast-env`. After creating the virtual environment, you need to change directory into that environment folder and activate it, which can be done by typing `source bin/activate`. After typing this command, you will be working from within a virtual environment. However, you will be in the `fast-env` folder, so you will need to back out one directory.
 
-Now that we have a virtual environment, we can install all the packages needed to develop an application with FastAPI. To begin, we need to install the FastAPI library and a webserver to run it. Assuming that you have Python 3 installed, you should run  `pip3 install fastapi` in your terminal to install the FastAPI library, and once that is complete, run `pip3 install uvicorn[standard]` to install the web server.
+From within the virtual environment, we can start to install the FastAPI library and a webserver to run it. Assuming that you have Python 3 installed, you should run  `pip3 install fastapi` in your terminal to install the FastAPI library, and once that is complete, run `pip3 install uvicorn[standard]` to install the web server that runs FastAPI. To get more information on what uvicorn is, you can visit the [uvicorn website](https://www.uvicorn.org/).
 
-In order to incorporate authentication, we need to install the Authlib library in order to handle Json Web Tokens (JWT) required to use Auth0's library. To install, run `pip3 install Authlib` in the command line.
+In order to incorporate authentication, we need to install the Authlib library in order to handle Json Web Tokens (JWT) required to use Auth0's library. To install Authlib, run `pip3 install Authlib` in the command line.
 
 ### First Steps
 
-With all the libraries installed, we can go back to the application root (fastAPI) and create a `main.py` file, where our server code will live. The contents of the `main.py` will look like this:
+Now that all the libraries are installed, we can create a `main.py` file, where our server code will live. The contents of the `main.py` will look like this:
 
 ```python
 from fastapi import FastAPI
@@ -34,7 +34,7 @@ async def root():
     return {"message": "Hello World"}
 
 ```
-Lets break this down. To start, we are importing the FastAPI library, and creating out app by calliung the `FastAPI()` function. From there, we are defining a route to handle get requests on the base URL by decorating it with `@app.get`. Under the decorator, we are creating a route handler, which is a function that will run each time that base route is called. Here, we are returning an object with the key of "message" and value of "Hello World".
+Lets break this down. To start, we are importing the FastAPI library, and creating our app by calliung the `FastAPI()` function. From there, we are defining a route to handle get requests on the base URL by decorating it with `@app.get`. Under the decorator, we are creating a route handler, which is a function that will run each time that base route is called. Here, we are returning an object with the key of "message" and value of "Hello World".
 
 To get the server up and running, type `uvicorn main:app --reload` in the terminal. From there, you can visit the API via the web browser by going to the URL shown in the CLI (most likely http://127.0.0.1:8000), and in doing so, you will be greeted with `{"message": "Hello World"}` on the homepage. Congrats, you have just created your first FastAPI application!
 
